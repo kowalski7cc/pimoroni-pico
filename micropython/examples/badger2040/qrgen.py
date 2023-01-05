@@ -111,6 +111,7 @@ def draw_qr_file(n):
 
 
 badger_os.state_load("qrcodes", state)
+display.update_speed(badger2040.UPDATE_NORMAL)
 changed = not badger2040.woken_by_button()
 
 while True:
@@ -127,9 +128,11 @@ while True:
 
     if display.pressed(badger2040.BUTTON_B) or display.pressed(badger2040.BUTTON_C):
         display.pen(15)
+        display.update_speed(badger2040.UPDATE_FAST)
         display.clear()
         badger_os.warning(display, "To add QR codes, connect Badger2040 to a PC, load up Thonny, and see qrgen.py.")
         time.sleep(4)
+        display.update_speed(badger2040.UPDATE_NORMAL)
         changed = True
 
     if changed:

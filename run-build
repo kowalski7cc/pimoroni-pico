@@ -1,0 +1,9 @@
+#!/bin/env bash
+if [[ ! -d build ]]; then
+  mkdir build
+fi
+if [[ ! -d .ccache ]]; then
+  mkdir .ccache
+fi
+FOLDER=$(dirname $0)
+podman build -f "$FOLDER/micropython/build_scripts/builder-$1.Containerfile" -v $(realpath .ccache):/root/.ccache -v $(realpath build):/build -t "pimoroni-pico:$1" $FOLDER

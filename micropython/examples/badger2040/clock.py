@@ -9,7 +9,7 @@ rtc = machine.RTC()
 display = badger2040.Badger2040()
 display.led(128)
 display.update_speed(badger2040.UPDATE_TURBO)
-display.font("gothic")
+display.font("sans")
 
 cursors = ["year", "month", "day", "hour", "minute"]
 set_clock = False
